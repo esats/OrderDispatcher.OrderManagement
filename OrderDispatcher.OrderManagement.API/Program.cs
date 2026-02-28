@@ -75,11 +75,10 @@ app.MapGet("/_debug/apidesc", (IApiDescriptionGroupCollectionProvider provider) 
 
 // -------------------- Pipeline --------------------
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.MapScalarApiReference("/docs", o => o.Title = "Order Management API");
-}
+
+app.MapOpenApi();
+app.MapScalarApiReference("/docs", o => o.Title = "Order Management API");
+
 
 app.UseHttpsRedirection();
 
