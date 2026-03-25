@@ -16,54 +16,44 @@ namespace OrderDispatcher.OrderManagement.Core.EntityFramework
             _context = context;
         }
 
-        protected EfEntityRepositoryBase()
-        {
-        }
-
         public TEntity Add(TEntity entity)
         {
-            using var context = new TContext();
-            var addedEntity = context.Entry(entity);
+            var addedEntity = _context.Entry(entity);
             addedEntity.State = EntityState.Added;
-            context.SaveChanges();
+            _context.SaveChanges();
             return entity;
         }
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-            using var context = new TContext();
-            var addedEntity = context.Entry(entity);
+            var addedEntity = _context.Entry(entity);
             addedEntity.State = EntityState.Added;
-            await context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return entity;
         }
 
         public void Delete(TEntity entity)
         {
-            using var context = new TContext();
-            var deletedEntity = context.Entry(entity);
+            var deletedEntity = _context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public async Task DeleteAsync(TEntity entity)
         {
-            using var context = new TContext();
-            var deletedEntity = context.Entry(entity);
+            var deletedEntity = _context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            await context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public List<TEntity> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
-            using var context = new TContext();
-            return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+            return filter == null ? _context.Set<TEntity>().ToList() : _context.Set<TEntity>().Where(filter).ToList();
         }
 
         public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            await using var context = new TContext();
-            var query = context.Set<TEntity>().AsQueryable();
+            var query = _context.Set<TEntity>().AsQueryable();
 
             if (filter != null)
             {
@@ -75,31 +65,27 @@ namespace OrderDispatcher.OrderManagement.Core.EntityFramework
 
         public TEntity GetT(Expression<Func<TEntity, bool>> filter = null)
         {
-            using var context = new TContext();
-            return context.Set<TEntity>().SingleOrDefault(filter);
+            return _context.Set<TEntity>().SingleOrDefault(filter);
         }
 
         public async Task<TEntity> GetTAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            using var context = new TContext();
-            return await context.Set<TEntity>().SingleOrDefaultAsync(filter);
+            return await _context.Set<TEntity>().SingleOrDefaultAsync(filter);
         }
 
         public TEntity Update(TEntity entity)
         {
-            using var context = new TContext();
-            var updatedEntity = context.Entry(entity);
+            var updatedEntity = _context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
-            context.SaveChanges();
+            _context.SaveChanges();
             return entity;
         }
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            using var context = new TContext();
-            var updatedEntity = context.Entry(entity);
+            var updatedEntity = _context.Entry(entity);
             updatedEntity.State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return entity;
         }
     }
