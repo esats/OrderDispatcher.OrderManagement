@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using OrderDispatcher.CatalogService.Dal.Concrete.EntityFramework;
 using OrderDispatcher.OrderManagement.API.Infrastructure;
 using OrderDispatcher.OrderManagement.Dal.Abstract;
 using OrderDispatcher.OrderManagement.Dal.Concrete.EntityFramework;
