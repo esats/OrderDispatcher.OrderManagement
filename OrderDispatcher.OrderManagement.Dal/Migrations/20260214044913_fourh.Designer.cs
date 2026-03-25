@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderDispatcher.CatalogService.Dal.Concrete.EntityFramework;
+using OrderDispatcher.OrderManagement.Dal.Concrete.EntityFramework;
 
 #nullable disable
 

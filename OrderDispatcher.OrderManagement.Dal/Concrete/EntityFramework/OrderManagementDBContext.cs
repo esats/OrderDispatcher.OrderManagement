@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OrderDispatcher.CatalogService.Entities;
 using OrderDispatcher.OrderManagement.Entities;
 
 namespace OrderDispatcher.OrderManagement.Dal.Concrete.EntityFramework

@@ -1,3 +1,4 @@
+using OrderDispatcher.CatalogService.Entities;
 using OrderDispatcher.OrderManagement.Core.EntityFramework;
 using OrderDispatcher.OrderManagement.Dal.Abstract;
 using OrderDispatcher.OrderManagement.Entities;
